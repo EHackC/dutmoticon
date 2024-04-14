@@ -41,7 +41,7 @@ window.fetch = async (input, config) => {
     // 요청의 body가 올바른 JSON 형식이면 Object로 변환
     const body = isJSON(config.body) ? JSON.parse(config.body) : undefined;
 
-    if (body) {
+    if (body&&body.query) {
       // 스티커 목록을 요청한 경우
       if (body.query.trim().startsWith("query SELECT_STICKERS")) {
         const response = (await itemsResponse).clone();
